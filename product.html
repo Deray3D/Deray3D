@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>{{ product.name }}</h2>
+    <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+    <p>{{ product.description }}</p>
+    <p>Cena: {{ product.price }} PLN</p>
+    <button onclick="addToCart({{ product.id }})">Dodaj do koszyka</button>
+{% endblock %}

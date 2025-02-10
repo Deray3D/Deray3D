@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Katalog produktów</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Katalog produktów</h1>
+        <a href="/">Wróć na stronę główną</a>
+    </header>
+    <main>
+        <div class="products">
+            {% for product in products %}
+            <div class="product">
+                <img src="/static/images/{{ product['image'] }}" alt="{{ product['name'] }}">
+                <h3>{{ product['name'] }}</h3>
+                <p>{{ product['price'] }} zł</p>
+                <a href="/product/{{ product['id'] }}">Szczegóły</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

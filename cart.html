@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Koszyk</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Twój koszyk</h1>
+    <ul>
+        {% for item in cart %}
+        <li>{{ item['name'] }} - {{ item['price'] }} zł</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Wróć na stronę główną</a>
+</body>
+</html>
