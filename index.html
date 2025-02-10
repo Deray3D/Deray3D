@@ -1,16 +1,54 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep Internetowy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sklep Internetowy</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Strona Główna</a></li>
+                <li><a href="#">Produkty</a></li>
+                <li><a href="#">Koszyk</a></li>
+            </ul>
+        </nav>
+    </header>
 
-{% block content %}
-    <h2>Produkty</h2>
-    <div class="products">
-        {% for product in products %}
+    <main>
+        <section class="products">
             <div class="product">
-                <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.description }}</p>
-                <p>Cena: {{ product.price }} PLN</p>
-                <a href="{{ url_for('product', id=product.id) }}">Zobacz więcej</a>
+                <img src="product1.jpg" alt="Produkt 1">
+                <h2>Produkt 1</h2>
+                <p>Cena: 50 zł</p>
+                <button class="add-to-cart" data-id="1">Dodaj do koszyka</button>
             </div>
-        {% endfor %}
-    </div>
-{% endblock %}
+            <div class="product">
+                <img src="product2.jpg" alt="Produkt 2">
+                <h2>Produkt 2</h2>
+                <p>Cena: 70 zł</p>
+                <button class="add-to-cart" data-id="2">Dodaj do koszyka</button>
+            </div>
+            <!-- Więcej produktów -->
+        </section>
+
+        <aside class="cart">
+            <h2>Koszyk</h2>
+            <ul class="cart-items">
+                <!-- Elementy koszyka będą dodawane dynamicznie -->
+            </ul>
+            <p>Suma: <span class="cart-total">0</span> zł</p>
+            <button class="checkout">Przejdź do płatności</button>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sklep Internetowy</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
