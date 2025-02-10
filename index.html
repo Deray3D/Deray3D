@@ -5,6 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sklep Internetowy</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Snipcart CSS -->
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 1rem;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            width: calc(33.333% - 2rem);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #218838;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,7 +81,7 @@
             <ul>
                 <li><a href="#">Strona Główna</a></li>
                 <li><a href="#">Produkty</a></li>
-                <li><a href="#">Koszyk</a></li>
+                <li><a href="#" class="snipcart-checkout">Koszyk (<span class="snipcart-items-count">0</span>)</a></li>
             </ul>
         </nav>
     </header>
@@ -21,34 +89,56 @@
     <main>
         <section class="products">
             <div class="product">
-                <img src="product1.jpg" alt="Produkt 1">
+                <img src="https://via.placeholder.com/150" alt="Produkt 1">
                 <h2>Produkt 1</h2>
                 <p>Cena: 50 zł</p>
-                <button class="add-to-cart" data-id="1">Dodaj do koszyka</button>
+                <button class="snipcart-add-item"
+                    data-item-id="1"
+                    data-item-price="50"
+                    data-item-url="https://twoja-strona.github.io"
+                    data-item-description="Opis produktu 1"
+                    data-item-image="https://via.placeholder.com/150"
+                    data-item-name="Produkt 1">
+                    Dodaj do koszyka
+                </button>
             </div>
             <div class="product">
-                <img src="product2.jpg" alt="Produkt 2">
+                <img src="https://via.placeholder.com/150" alt="Produkt 2">
                 <h2>Produkt 2</h2>
                 <p>Cena: 70 zł</p>
-                <button class="add-to-cart" data-id="2">Dodaj do koszyka</button>
+                <button class="snipcart-add-item"
+                    data-item-id="2"
+                    data-item-price="70"
+                    data-item-url="https://twoja-strona.github.io"
+                    data-item-description="Opis produktu 2"
+                    data-item-image="https://via.placeholder.com/150"
+                    data-item-name="Produkt 2">
+                    Dodaj do koszyka
+                </button>
             </div>
-            <!-- Więcej produktów -->
+            <div class="product">
+                <img src="https://via.placeholder.com/150" alt="Produkt 3">
+                <h2>Produkt 3</h2>
+                <p>Cena: 100 zł</p>
+                <button class="snipcart-add-item"
+                    data-item-id="3"
+                    data-item-price="100"
+                    data-item-url="https://twoja-strona.github.io"
+                    data-item-description="Opis produktu 3"
+                    data-item-image="https://via.placeholder.com/150"
+                    data-item-name="Produkt 3">
+                    Dodaj do koszyka
+                </button>
+            </div>
         </section>
-
-        <aside class="cart">
-            <h2>Koszyk</h2>
-            <ul class="cart-items">
-                <!-- Elementy koszyka będą dodawane dynamicznie -->
-            </ul>
-            <p>Suma: <span class="cart-total">0</span> zł</p>
-            <button class="checkout">Przejdź do płatności</button>
-        </aside>
     </main>
 
     <footer>
         <p>&copy; 2023 Sklep Internetowy</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Snipcart JavaScript -->
+    <script src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="MGRjNTZlMGItNDQyYy00N2JlLWIzM2EtNGUzY2JlMDRlYjRlNjM4NzQ4MTgzNDQ4NTk4NTMz"></div>
 </body>
 </html>
