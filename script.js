@@ -1,41 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const cartItems = [];
-    const cartList = document.querySelector(".cart-items");
-    const cartTotal = document.querySelector(".cart-total");
+    const cart = []; // Przechowuje produkty w koszyku
+    const cartItemsList = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.getElementById("cart-count");
+    const cartModal = document.getElementById("cart-modal");
+    const cartButton = document.getElementById("cart-button");
+    const closeCartButton = document.getElementById("close-cart");
+    const checkoutButton = document.getElementById("checkout");
 
+    // Dodawanie produktów do koszyka
     document.querySelectorAll(".add-to-cart").forEach(button => {
         button.addEventListener("click", () => {
-            const product = button.parentElement;
-            const productId = button.getAttribute("data-id");
-            const productName = product.querySelector("h2").innerText;
-            const productPrice = parseFloat(product.querySelector("p").innerText.replace("Cena: ", "").replace(" zł", ""));
-
-            const cartItem = {
-                id: productId,
-                name: productName,
-                price: productPrice
+            const product = {
+                id: button.getAttribute("data-id"),
+                name: button.getAttribute("data-name"),
+                price: parseFloat(button.getAttribute("data-price"))
             };
 
-            cartItems.push(cartItem);
+            cart.push(product);
             updateCart();
         });
     });
 
+    // Aktualizacja koszyka
     function updateCart() {
-        cartList.innerHTML = "";
+        cartItemsList.innerHTML = "";
         let total = 0;
 
-        cartItems.forEach(item => {
+        cart.forEach(item => {
             const li = document.createElement("li");
             li.innerHTML = `${item.name} - ${item.price} zł`;
-            cartList.appendChild(li);
+            cartItemsList.appendChild(li);
             total += item.price;
         });
 
         cartTotal.innerText = total.toFixed(2);
+        cartCount.innerText = cart.length;
     }
 
-    document.querySelector(".checkout").addEventListener("click", () => {
-        alert("Przejdź do płatności (funkcjonalność do zaimplementowania)");
+    // Otwieranie koszyka
+    cartButton.addEventListener("click", () => {
+        cartModal.style.display = "flex";
+    });
+
+    // Zamykanie koszyka
+    closeCartButton.addEventListener("click", () => {
+        cartModal.style.display = "none";
+    });
+
+    // Składanie zamówienia
+    checkoutButton.addEventListener("click", () => {
+        alert("Zamówienie złożone! Suma: " + cartTotal.innerText + " zł");
+        cart.length = 0; // Czyści koszyk
+        updateCart();
+        cartModal.style.display = "none";
     });
 });
